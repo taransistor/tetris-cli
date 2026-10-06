@@ -1,0 +1,32 @@
+BasedOnStyle: LLVM
+
+# Indentation (2 spaces, no tabs)
+UseTab: Never
+IndentWidth: 2
+TabWidth: 2
+
+# Line length
+ColumnLimit: 100
+
+# Braces style
+BreakBeforeBraces: Custom
+BraceWrapping:
+  AfterFunction: true
+  AfterClass: true
+  AfterStruct: true
+  AfterEnum: true
+  AfterControlStatement: true
+  AfterNamespace: true
+  AfterExternBlock: true
+  BeforeElse: true
+  BeforeCatch: true
+  SplitEmptyFunction: false
+  SplitEmptyRecord: false
+  SplitEmptyNamespace: false
+
+# Force multiline functions
+AllowShortFunctionsOnASingleLine: Empty
+
+# Extras for clean formatting
+IndentCaseLabels: true
+SpaceBeforeParens: ControlStatements
