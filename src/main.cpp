@@ -102,6 +102,31 @@ bool isValid(std::array<std::array<int, WIDTH>, HEIGHT> &state, int y, int x, bo
   return true;
 }
 
+void renderHardDropPreview(WINDOW *win, std::array<std::array<int, WIDTH>, HEIGHT> &state,
+                           Piece &piece)
+{
+  int y = 0;
+  while (isValid(state, y, piece.x, piece.piece))
+  {
+    ++y;
+  }
+  --y;
+  for (int j = 0; j < 4; ++j)
+  {
+    for (int i = 0; i < 4; ++i)
+    {
+      if (piece.piece[4 * j + i] == 1)
+      {
+        wattron(win, COLOR_PAIR(9));
+        mvwaddch(win, y + j + 1, (piece.x + i) * 2 + 1, '#');
+        mvwaddch(win, y + j + 1, (piece.x + i) * 2 + 2, '#');
+        wattroff(win, COLOR_PAIR(9));
+      }
+    }
+  }
+  wrefresh(win);
+}
+
 void putPiece(std::array<std::array<int, WIDTH>, HEIGHT> &state, Piece &piece)
 {
   for (int j = 0; j < 4; ++j)
@@ -321,6 +346,7 @@ int main()
     init_pair(6, COLOR_WHITE, COLOR_BLUE);
     init_pair(7, COLOR_WHITE, COLOR_MAGENTA);
     init_pair(8, COLOR_WHITE, COLOR_CYAN);
+    init_pair(9, COLOR_BLACK, COLOR_WHITE);
   }
   bkgd(COLOR_PAIR(2));
 
@@ -389,6 +415,7 @@ int main()
 
     // render shi
     renderState(win, state);
+    renderHardDropPreview(win, state, piece);
     renderPiece(win, piece);
 
     napms(10);

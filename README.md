@@ -1,8 +1,7 @@
 # tetris-cli
-command line tetris game written in c++.
-no ai used.
+A terminal-based tetris game built with c++.
+![tetris-cli.png](./assets/tetris-cli.png)
 
 # todos:
 scoring system.
 preview of next piece.
-preview of where piece will drop.
